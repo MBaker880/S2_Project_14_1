@@ -32,7 +32,23 @@ function setStyles() {
       linkElem.setAttribute("id", "fancySheet");
       linkElem.setAttribute("href", "na_style_" + styleNum + ".css");
 
+      // Attaches the linkElem to the document head since its a seperate element
       document.head.appendChild(linkElem);
+
+      var figBox = document.createElement("figure");
+      figBox.setAttribute("id", "styleThumbs");
+
+      // Attaching the figBox object to the div with the id of box
+      document.getElementById("box").appendChild(figBox);
+
+      // Populates the figure box for previews of the five wedding website examples
+      for (var i = 0; i < 4; i++) {
+            var sheetImg = document.createElement("img");
+            sheetImg.setAttribute("src", "na_small_" + i + ".png");
+            sheetImg.setAttribute("alt", "na_style_" + i + ".css");
+
+            sheetImg
+      }
 
 }
 
