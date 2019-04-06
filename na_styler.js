@@ -42,37 +42,42 @@ function setStyles() {
       document.getElementById("box").appendChild(figBox);
 
       // Populates the figure box for previews of the five wedding website examples
-      for (var i = 0; i < 4; i++) {
+      for (var i = 0; i <= 4; i++) {
             var sheetImg = document.createElement("img");
             sheetImg.setAttribute("src", "na_small_" + i + ".png");
             sheetImg.setAttribute("alt", "na_style_" + i + ".css");
-
-            sheetImg
+            sheetImg.addEventListener("click", function(e) {
+                  document.getElementById("fancySheet").setAttribute("href", e.target.alt);
+            });
+            figBox.appendChild(sheetImg);
       }
 
+      // Appends the thumbStyles to the document head
+      var thumbStyles = document.createElement("style");
+      document.head.appendChild(thumbStyles);
+
+      // Adds styles to the links to the different wedding pictures
+      document.styleSheets[document.styleSheets.length - 1].insertRule(
+            "figure#styleThumbs { \
+                  position: absolute; \
+                  left: 0px; \
+                  bottom: 0px; \
+            }", 0);
+
+      document.styleSheets[document.styleSheets.length - 1].insertRule(
+            "figure#styleThumbs img { \
+                  outline: 1px solid black; \
+                  cursor: pointer; \
+                  opacity: 0.75; \
+            }", 1);
+
+
+      document.styleSheets[document.styleSheets.length - 1].insertRule(
+            "figure#styleThumbs img: hover { \
+                  outline: 1px solid red; \
+                  opacity: 1.0; \
+            }", 2);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ---------------------------------------------------------------------------------------------------------- */
 function randInt(size) {
